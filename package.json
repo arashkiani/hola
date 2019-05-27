@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "tsc",
-    "deploy": "nodemon ./dist/server.js",
+    "predeploy": "tsc",
+    "deploy": "pm2 start ./dist/server.js",
     "compile:watch": "tsc -w",
+    "develop": "nodemon ./dist/server.js",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,6 +27,7 @@
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "nodemon": "^1.19.1",
+    "pm2": "^3.5.1",
     "uuid": "^3.3.2",
     "wrtc": "^0.4.1",
     "ws": "^7.0.0"

@@ -42,4 +42,4 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST $COMMAND
+            ssh $SSH_USER@$SSH_HOST "yarn deploy"
