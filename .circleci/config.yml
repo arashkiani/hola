@@ -26,7 +26,7 @@ jobs:
       enabled: true
     working_directory: ~/circleci
     steps:
-      - run: scp ~/repo ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/circleci -p
+      - run: scp ~/repo ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/circleci
 workflows:
   version: 2
   package-deploy:
