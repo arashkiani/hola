@@ -26,7 +26,10 @@ jobs:
       enabled: true
     working_directory: ~/circleci
     steps:
-      - run: scp ~/repo ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/circleci
+      - add_ssh_keys:
+          fingerprints:
+            - $FINGERPRINT
+      - run: scp ~/repo ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/circleci -p $PORT
 workflows:
   version: 2
   package-deploy:
