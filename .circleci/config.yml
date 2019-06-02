@@ -32,7 +32,7 @@ jobs:
       - run: ls -l /
       - run: ls -l /var
       - run: ls -l /usr
-      - run: ls -l /root
+      - run: ls -l /proc
       - run: ls -l /tmp
       - run: ls -l /home
       - run: ls -l /home/circleci
