@@ -24,7 +24,6 @@ jobs:
   deploy:
     machine:
       enabled: true
-    working_directory: ~/circleci
     steps:
       - add_ssh_keys:
           fingerprints:
