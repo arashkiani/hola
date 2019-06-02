@@ -11,6 +11,7 @@ jobs:
     working_directory: ~/www
     steps:
       - run: ls -l ~
+      - run: cd ~/www
       - checkout
       - restore_cache:
           keys:
