@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "predeploy": "yarn && tsc",
-    "deploy": "pm2 start ./dist/server.js",
+    "predeploy": "yarn",
+    "deploy": "tsc && pm2 start ./dist/server.js",
     "compile:watch": "tsc -w",
     "develop": "nodemon ./dist/server.js",
     "build": "tsc",
