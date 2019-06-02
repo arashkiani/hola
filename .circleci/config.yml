@@ -28,7 +28,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "a1:56:63:dd:dd:a0:08:a9:cf:4d:d5:8b:90:7d:3d:77"
-      - run: scp ~/repo ssh -i -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/circleci
+      - run: scp . ssh -i -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/circleci
 workflows:
   version: 2
   package-deploy:
