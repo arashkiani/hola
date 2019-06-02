@@ -30,7 +30,10 @@ jobs:
             - "a1:56:63:dd:dd:a0:08:a9:cf:4d:d5:8b:90:7d:3d:77"
       - run: ls -l ~/project
       - run: ls -l /
-      - run: ls -l /temp
+      - run: ls -l /var
+      - run: ls -l /usr
+      - run: ls -l /root
+      - run: ls -l /tmp
       - run: ls -l /home
       - run: ls -l /home/circleci
       - run: ls -l /home/circleci/project
