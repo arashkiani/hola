@@ -32,11 +32,16 @@ jobs:
       - run: ls -l /
       - run: ls -l /var
       - run: ls -l /usr
+      - run: ls -l /usr/src
+      - run: ls -l /media
       - run: ls -l /proc
       - run: ls -l /tmp
       - run: ls -l /home
+      - run: ls -l /home/ubuntu
+      - run: ls -l /home/circleci-admin
       - run: ls -l /home/circleci
       - run: ls -l /home/circleci/project
+      - run: ls -l /home/circleci/bin
       # - run: scp ~/repo ssh -i -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/repo
       # - run: scp -r /home/www $SSH_USER@$SSH_HOST:/home
 workflows:
