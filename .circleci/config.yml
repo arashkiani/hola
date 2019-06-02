@@ -10,7 +10,7 @@ jobs:
       - image: circleci/node:12.0
     working_directory: ~/www
     steps:
-      - run: ls -lR ~
+      - run: ls -l ~
       - checkout
       - restore_cache:
           keys:
