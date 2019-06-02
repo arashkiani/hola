@@ -10,8 +10,6 @@ jobs:
       - image: circleci/node:12.0
     working_directory: ~/www
     steps:
-      - run: ls -l ~
-      - run: cd ~/www
       - checkout
       - restore_cache:
           keys:
@@ -31,6 +29,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "a1:56:63:dd:dd:a0:08:a9:cf:4d:d5:8b:90:7d:3d:77"
+      - run: ls -l ~
       #- run: scp ~/repo ssh -i -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/repo
       - run: scp -r /home/www $SSH_USER@$SSH_HOST:/home
 workflows:
