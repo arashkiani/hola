@@ -28,7 +28,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "$FINGERPRINT"
+            - $FINGERPRINT
       - run: scp ~/repo ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/circleci
 workflows:
   version: 2
