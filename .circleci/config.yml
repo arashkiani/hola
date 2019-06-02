@@ -29,8 +29,11 @@ jobs:
           fingerprints:
             - "a1:56:63:dd:dd:a0:08:a9:cf:4d:d5:8b:90:7d:3d:77"
       - run: ls -l ~/project
-      #- run: scp ~/repo ssh -i -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/repo
-      - run: scp -r /home/www $SSH_USER@$SSH_HOST:/home
+      - run: ls -l /
+      - run: ls -l /home
+      - run: ls -l /home/circleci
+      # - run: scp ~/repo ssh -i -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/repo
+      # - run: scp -r /home/www $SSH_USER@$SSH_HOST:/home
 workflows:
   version: 2
   package-deploy:
