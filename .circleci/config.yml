@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:12.0
-    working_directory: /home/www
+    working_directory: /home
     steps:
       - checkout
       - restore_cache:
