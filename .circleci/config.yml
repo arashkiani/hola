@@ -8,31 +8,39 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:12.0
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+    working_directory: ~/www
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies-
-
-      - run: yarn install
-
+      - run: yarn install --frozen-lockfile
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
-      - run: yarn compile
-      - run: yarn start
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: yarn build
+  deploy:
+    working_directory: ~/www
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "a1:56:63:dd:dd:a0:08:a9:cf:4d:d5:8b:90:7d:3d:77"
+      # - run: scp ~/repo ssh -i -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST:~/repo
+      - run: scp -r /home/circleci/www $SSH_USER@$SSH_HOST:/home
+      - run: ssh $SSH_USER@$SSH_HOST "cd /home/www && npm run deploy"
+workflows:
+  version: 2
+  package-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          #filters:
+            #branches:
+              #only: master
